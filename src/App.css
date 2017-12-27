@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Romanesco|Source+Sans+Pro:200,300');
+html {
+    background: #E6F4E7;
+}
+header {
+    padding: 10px;
+}
+#logo {
+    margin-left: 10%;
+}
+#login:hover {
+    border-color: #FFFFFF;
+}

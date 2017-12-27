@@ -1,0 +1,57 @@
+header {
+    background: #61BE64; /* 61BE64, 3AAE3E */
+}
+nav {
+    width: 900px;
+    margin: auto;
+    position: relative;
+}
+nav div {
+    display: inline-block;
+    float: right;
+}
+nav #search-bar {
+    background: #FFFFFF;
+    left: 20px;
+    top: 35px;
+    padding: 10px;
+}
+nav #search-bar a {
+    display: block;
+    float: none;
+    padding: 5px;
+    margin: 5px;
+    color: #000000;
+}
+.navbar-item {
+    color: #FFFFFF; /* EDF6F3 */
+    cursor: pointer;
+}
+#search-book {
+    width: 250px;
+}
+#search-bar {
+    position: absolute;
+    left: 0;
+    top: 60px;
+}
+#search-book::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #000000;
+}
+#search-book:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #000000;
+   opacity:  1;
+}
+#search-book::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #000000;
+   opacity:  1;
+}
+#search-book:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #000000;
+}
+#search-book::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #000000;
+}
+#search-book::placeholder { /* Most modern browsers support this now. */
+   color:    #000000;
+}
