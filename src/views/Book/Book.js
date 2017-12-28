@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import BookContainer from './../../containers/book/book'
 
-export class BookPage extends Component {
+export class Book extends Component {
     constructor(props) {
         super(props);
         this.state = {slug: props.slug};
