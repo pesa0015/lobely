@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchBook } from '../../actions/book'
+import { fetchBook, haveLikedBook, haveDeletedBook } from '../../actions/book'
 import { BookCover } from './../../components/book/bookCover'
 import { getBook, likeBook, deleteBook } from '../../services/book'
 
@@ -19,12 +19,12 @@ class BookContainer extends Component {
     }
     bookLike() {
         likeBook(this.props.books.id).then((response) => {
-            window.location.reload();
+            this.props.dispatch(haveLikedBook(this.props.books.id));
         });
     }
     bookDelete() {
         deleteBook(this.props.books.id).then((response) => {
-            window.location.reload();
+            this.props.dispatch(haveDeletedBook(this.props.books.id));
         });
     }
     render() {
@@ -51,7 +51,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    fetchBook : () => dispatch(fetchBook)
+    fetchBook : () => dispatch(fetchBook),
+    haveLikedBook : () => dispatch(haveLikedBook),
+    haveDeletedBook : () => dispatch(haveDeletedBook)
   }
 }
 

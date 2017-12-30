@@ -17,3 +17,17 @@ export function fetchBook(book) {
         payload: book
     }
 }
+
+export function haveLikedBook(id) {
+    return {
+        type: 'LIKE_BOOK',
+        payload: id
+    }
+}
+
+export function haveDeletedBook(id) {
+    return {
+        type: 'DELETE_BOOK',
+        payload: id
+    }
+}

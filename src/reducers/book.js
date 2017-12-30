@@ -21,6 +21,16 @@ const books = (state = initialState, action) => {
             return state[id];
         case 'LIST_BOOKS':
             return state;
+        case 'LIKE_BOOK':
+            if (!state.length) {
+                return {...state, liked: true};
+            }
+            return state;
+        case 'DELETE_BOOK':
+            if (!state.length) {
+                return {...state, liked: false};
+            }
+            return state;
         default:
             return state;
     }
