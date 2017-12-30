@@ -1,19 +1,24 @@
-const initialState = {
-    books: []
-}
+const initialState = [];
+
+const bookIds = [];
 
 const books = (state = initialState, action) => {
+    const book = action.payload;
+
     switch (action.type) {
         case 'FETCH_BOOKS':
+            bookIds.length = 0;
+            action.payload.map(book => {
+                return bookIds.push(book.id);
+            });
             return action.payload;
         case 'FETCH_BOOK':
-            const updatedItem = state.map(item => {
-                if (item.slug === action.payload.slug) {
-                  return { ...item, ...action.payload };
-                }
-                return { ...action.payload };
-              });
-            return updatedItem;
+            if (bookIds.indexOf(book.id) === -1) {
+                state = [...state, book];
+                bookIds.push(book.id);
+            }
+            let id = bookIds.indexOf(book.id);
+            return state[id];
         case 'LIST_BOOKS':
             return state;
         default:

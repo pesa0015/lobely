@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchBooks } from '../../actions/book'
+import { fetchBooks, listBooks } from '../../actions/book'
 import { Book } from './../../components/book/book'
 import { getBooks } from './../../services/book'
 
@@ -25,6 +25,7 @@ class Books extends Component {
     componentWillMount() {
         getBooks().then((response) => {
             this.props.dispatch(fetchBooks(response.data));
+            this.props.dispatch(listBooks());
         });
     }
   render() {
@@ -37,15 +38,14 @@ class Books extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    books: state.books
-  }
+  return state;
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    fetchBooks : () => dispatch(fetchBooks)
+    fetchBooks : () => dispatch(fetchBooks),
+    listBooks : () => dispatch(listBooks)
   }
 }
 
