@@ -107,7 +107,7 @@ export default class ProfileContainer extends Component {
         .then((response) => {
             if (response.status === 200) {
                 this.setState({editProfile: false, buttonIsLoading: false});
-                notyMessage('<i class="fa fa-check"><span>Ändringen genomfördes</span></i>');
+                notyMessage('Ändringen genomfördes');
             }
         });
     }
@@ -117,7 +117,7 @@ export default class ProfileContainer extends Component {
         }
         updatePassword(this.state.currentPassword, this.state.newPassword, this.state.repeatNew)
         .then((response) => {
-            notyMessage('<i class="fa fa-check"><span>Lösenordet ändrades</span></i>');
+            notyMessage('Lösenordet ändrades');
         });
     }
     changeTab(tab) {

@@ -8,7 +8,6 @@ import reducer from './reducers'
 import refreshToken from './services/refreshToken'
 import { Login, Home, Book, Profile, ForgotPassword } from './views'
 import isLoggedIn from './services/isLoggedIn'
-import 'font-awesome/css/font-awesome.min.css';
 import './App.css'
 import Nav from './views/Nav/Nav'
 
