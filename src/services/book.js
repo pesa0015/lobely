@@ -7,3 +7,11 @@ export function getBook(slug) {
 export function getBooks() {
     return http('/bookshelfs', headers());
 }
+
+export function likeBook(id) {
+    return http.post('/bookshelfs', 'bookId=' + id, headers());
+}
+
+export function deleteBook(id) {
+    return http.delete('/bookshelfs/' + id, headers());
+}
