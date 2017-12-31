@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchBook, haveLikedBook, haveDeletedBook } from '../../actions/book'
 import { BookCover } from './../../components/book/bookCover'
 import { getBook, likeBook, deleteBook } from '../../services/book'
+import './book.css'
 
 class BookContainer extends Component {
     constructor(props) {
@@ -36,8 +37,8 @@ class BookContainer extends Component {
             <div>
                 <BookCover book={this.props.books}/>
                 {(book.liked ?
-                    <a className='button is-large is-danger' onClick={this.bookDelete}>Ta bort</a> :
-                    <a className='button is-large is-success' onClick={this.bookLike}>Gilla</a>
+                    <a id='book-delete' className='button is-large is-danger' onClick={this.bookDelete}>Ta bort</a> :
+                    <a id='book-like' className='button is-large is-success' onClick={this.bookLike}>Gilla</a>
                 )}
             </div>
         );

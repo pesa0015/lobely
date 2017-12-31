@@ -1,9 +1,9 @@
 import React from 'react'
-import './../../views/Home/Book.css'
+import './book.css'
 
 export const BookCover = ({book}) => {
     return (
-      <div className='column book'>
+      <div id='book-cover'>
         <img src={book.cover} alt={book.title}/>
       </div>
     );
