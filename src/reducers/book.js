@@ -28,7 +28,12 @@ const books = (state = initialState, action) => {
             return state;
         case 'DELETE_BOOK':
             if (!state.length) {
-                return {...state, liked: false};
+                return {...state, liked: false, comment: null};
+            }
+            return state;
+        case 'UPDATE_COMMENT':
+            if (!state.length) {
+                return {...state, comment: action.payload};
             }
             return state;
         default:

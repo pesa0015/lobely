@@ -1,7 +1,6 @@
 #book-cover {
     height: 300px;
-    margin: 5% 0 0 10%;
-    display: inline-block;
+    float: left;
 }
 #book-cover img {
     height: 100%;

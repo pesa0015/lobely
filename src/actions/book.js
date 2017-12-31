@@ -31,3 +31,10 @@ export function haveDeletedBook(id) {
         payload: id
     }
 }
+
+export function updateComment(comment) {
+    return {
+        type: 'UPDATE_COMMENT',
+        payload: comment
+    }
+}

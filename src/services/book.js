@@ -15,3 +15,7 @@ export function likeBook(id) {
 export function deleteBook(id) {
     return http.delete('/bookshelfs/' + id, headers());
 }
+
+export function updateBookComment(id, comment) {
+    return http.put('/bookshelfs/' + id, 'comment=' + comment, headers());
+}

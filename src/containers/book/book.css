@@ -1,7 +1,22 @@
+#book-page {
+    margin: 5% 0 0 10%;
+}
 #book-like {
     display: inline-block;
-    margin: 5% 0 0 5%;
+    margin: 0% 0 0 5%;
 }
 #book-delete {
 
+}
+#book-comment {
+    display: inline-block;
+    width: 400px;
+    margin-left: 7%;
+}
+#book-comment .card-header-title {
+    font-weight: 600;
+    color: #FFFFFF;
+}
+#book-comment .card-footer-item {
+    color: #000000;
 }

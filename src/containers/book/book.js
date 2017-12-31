@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchBook, haveLikedBook, haveDeletedBook } from '../../actions/book'
+import BookCommentContainer from './bookCommentContainer'
 import { BookCover } from './../../components/book/bookCover'
-import { getBook, likeBook, deleteBook } from '../../services/book'
+import { getBook, likeBook } from '../../services/book'
 import './book.css'
 
 class BookContainer extends Component {
@@ -10,7 +11,6 @@ class BookContainer extends Component {
         super(props);
         this.state = {book: props};
         this.bookLike = this.bookLike.bind(this);
-        this.bookDelete = this.bookDelete.bind(this);
     }
     componentWillMount() {
         getBook(this.state.book.slug)
@@ -23,22 +23,19 @@ class BookContainer extends Component {
             this.props.dispatch(haveLikedBook(this.props.books.id));
         });
     }
-    bookDelete() {
-        deleteBook(this.props.books.id).then((response) => {
-            this.props.dispatch(haveDeletedBook(this.props.books.id));
-        });
-    }
     render() {
         let book = this.props.books;
         if (typeof book.id === 'undefined') {
             return null;
         }
         return (
-            <div>
+            <div id='book-page'>
                 <BookCover book={this.props.books}/>
                 {(book.liked ?
-                    <a id='book-delete' className='button is-large is-danger' onClick={this.bookDelete}>Ta bort</a> :
-                    <a id='book-like' className='button is-large is-success' onClick={this.bookLike}>Gilla</a>
+                    <div id='book-comment'>
+                        <BookCommentContainer book={book}/>
+                    </div>
+                    : <a id='book-like' className='button is-large is-success' onClick={this.bookLike}>Gilla</a>
                 )}
             </div>
         );
