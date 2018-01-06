@@ -4,6 +4,10 @@ export function getBook(slug) {
     return http('/books/' + slug, headers());
 }
 
+export function getUsersByBook(slug) {
+    return http('/books/' + slug + '?showUsers=1', headers());
+}
+
 export function getBooks() {
     return http('/bookshelfs', headers());
 }

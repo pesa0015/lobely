@@ -1,5 +1,6 @@
 #book-page {
     margin: 5% 0 0 10%;
+    height: 350px;
 }
 #book-like {
     display: inline-block;

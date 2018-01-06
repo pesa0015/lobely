@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { haveDeletedBook, updateComment } from '../../actions/book'
+import { deleteUsers } from '../../actions/user'
 import { deleteBook, updateBookComment } from '../../services/book'
 
 class BookCommentContainer extends Component {
@@ -19,6 +20,7 @@ class BookCommentContainer extends Component {
     bookDelete() {
         deleteBook(this.props.books.id).then((response) => {
             this.props.dispatch(haveDeletedBook(this.props.books.id));
+            this.props.dispatch(deleteUsers());
         });
     }
     render() {
@@ -65,7 +67,8 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     haveDeletedBook : () => dispatch(haveDeletedBook),
-    updateComment : () => dispatch(updateComment)
+    updateComment : () => dispatch(updateComment),
+    deleteUsers : () => dispatch(deleteUsers)
   }
 }
 
