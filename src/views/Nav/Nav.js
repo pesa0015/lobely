@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 import { searchBooks } from './../../services/search'
 import Logout from './Logout'
 import './Nav.css'
@@ -22,7 +23,7 @@ export default class Nav extends Component {
         this.setState({books: []});
     }
     render() {
-        let firstname = JSON.parse(window.localStorage.getItem('user')).firstname;
+        let firstname = jwt_decode(window.localStorage.getItem('user')).firstname;
     return (
       <div>
         <header>
