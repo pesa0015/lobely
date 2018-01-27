@@ -43,7 +43,7 @@ class BookContainer extends Component {
                 <hr />
                 {(book.liked ?
                     <div>
-                        <UsersContainer slug={book.slug}/>
+                        <UsersContainer slug={book.slug} id={book.id}/>
                     </div>
                     : null
                 )}

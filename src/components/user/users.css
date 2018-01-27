@@ -21,4 +21,11 @@
 }
 .user .content a {
     color: inherit;
+    vertical-align: middle;
+}
+.user .content .heart {
+    width: 40px;
+    vertical-align: middle;
+    margin-left: 20px;
+    cursor: pointer;
 }

@@ -2,6 +2,16 @@ const initialState = [];
 
 const userIds = [];
 
+const getUser = (id, state) => {
+    let userId = userIds.indexOf(id);
+    let userState = state[userId];
+
+    return {
+        index: userId,
+        user: userState
+    }
+};
+
 const users = (state = initialState, action) => {
     const user = action.payload;
 
@@ -19,6 +29,28 @@ const users = (state = initialState, action) => {
             }
             let id = userIds.indexOf(user.id);
             return state[id];
+        case 'LIKE_USER':
+            let likeUser = getUser(user.id, state);
+            return state.map( (item, index) => {
+                if (index !== likeUser.index) {
+                    return item;
+                }
+                return {
+                    ...likeUser.user,
+                    heart: true
+                };
+            });
+        case 'DELETE_LIKE_USER':
+            let deleteUser = getUser(user.id, state);
+            return state.map( (item, index) => {
+                if (index !== deleteUser.index) {
+                    return item;
+                }
+                return {
+                    ...deleteUser.user,
+                    heart: false
+                };
+            });
         case 'LIST_USERS':
             return state;
         case 'DELETE_USERS':
