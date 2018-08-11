@@ -7,6 +7,8 @@ import IdleTimer from 'react-idle-timer'
 import reducer from './reducers'
 import refreshToken from './services/refreshToken'
 import { Login, Home, Book, Profile, ForgotPassword } from './views'
+import { getProfile} from './services/profile'
+import { fetchProfile } from './actions/profile'
 import isLoggedIn from './services/isLoggedIn'
 import './App.css'
 import Nav from './views/Nav/Nav'
@@ -21,10 +23,16 @@ class Routes extends Component {
     onIdle() {
         refreshToken();
     }
+    fetchProfile() {
+        getProfile().then((response) => {
+            store.dispatch(fetchProfile(response.data));
+        });
+    }
     render() {
         if (!isLoggedIn()) {
             return <Redirect to='/'/>;
         }
+        this.fetchProfile();
         return (
             <div>
                 <IdleTimer
