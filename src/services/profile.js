@@ -9,5 +9,5 @@ export function updateProfile(payload) {
 }
 
 export function updatePassword(current, newPassword, repeatNew) {
-    return http.put('/user/profile/password', 'current=' + current + '&new=' + newPassword + '&repeatNew=' + repeatNew, headers());
+    return http.put('/user/profile/password', 'currentPassword=' + current + '&newPassword=' + newPassword + '&repeatNewPassword=' + repeatNew, headers());
 }
