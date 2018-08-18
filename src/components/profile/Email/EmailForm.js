@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import renderField from './../../renderField/renderField'
 
 class EmailForm extends Component {
     render() {
@@ -10,9 +11,9 @@ class EmailForm extends Component {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <Field
-                        className="input"
                         name="email"
-                        component="input"/>
+                        component={renderField}
+                        type="text"/>
                 </div>
             </form>
         );

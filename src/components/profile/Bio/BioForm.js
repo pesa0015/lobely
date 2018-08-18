@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-
-const renderTextArea = ({input, meta: { touched, error, warning }}) => (
-    <div>
-        <textarea {...input} className="textarea"></textarea>
-        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
-);
+import renderTextArea from './../../renderField/rederTextarea'
 
 class BioForm extends Component {
     render() {

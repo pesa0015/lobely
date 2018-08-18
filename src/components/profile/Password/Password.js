@@ -26,7 +26,7 @@ class Password extends Component {
             <div>
                 <h1 className='title'>Ändra lösenord</h1>
                 <div>
-                    <PasswordForm/>
+                    <PasswordForm onSubmit={this.handleSubmit}/>
                     {this.state.isSending ? ( <ButtonLoading/> ) : <PasswordFormSubmit onSubmit={this.handleSubmit}/> }
                 </div>
             </div>

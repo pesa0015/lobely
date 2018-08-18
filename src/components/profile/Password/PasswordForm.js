@@ -1,42 +1,29 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import renderField from './../../renderField/renderField'
 
 class PasswordForm extends Component {
     render() {
+        const { handleSubmit, onSubmit } = this.props;
+
         return (
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <div className="field">
-                        <label className="label left">Nuvarande lösenord</label>
-                        <div className="control">
-                            <Field
-                                className="input"
-                                name="currentPassword"
-                                component="input"
-                                type="password"/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className="label left">Nytt lösenord</label>
-                        <div className="control">
-                            <Field
-                                className="input"
-                                name="newPassword"
-                                component="input"
-                                type="password"/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className="label left">Upprepa lösenord</label>
-                        <div className="control">
-                            <Field
-                                className="input"
-                                name="repeatPassword"
-                                component="input"
-                                type="password"/>
-                        </div>
-                    </div>
+                    <Field
+                        name="currentPassword"
+                        component={renderField}
+                        label="Nuvarande lösenord"
+                        type="password"/>
+                    <Field
+                        name="newPassword"
+                        component={renderField}
+                        label="Nytt lösenord"
+                        type="password"/>
+                    <Field
+                        name="repeatPassword"
+                        component={renderField}
+                        label="Upprepa lösenord"
+                        type="password"/>
                 </div>
             </form>
         );
@@ -46,11 +33,5 @@ class PasswordForm extends Component {
 PasswordForm = reduxForm({
   form: 'passwordForm',
 })(PasswordForm);
-
-PasswordForm = connect(
-  state => ({
-    initialValues: state.profile
-  })
-)(PasswordForm);
 
 export default PasswordForm;
