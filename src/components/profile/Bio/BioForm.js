@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import renderTextArea from './../../renderField/rederTextarea'
+import renderTextArea from './../../renderField/renderTextarea'
 
 class BioForm extends Component {
     render() {
