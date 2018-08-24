@@ -1,7 +1,7 @@
 import { http, headers } from './httpHelper'
 
 export function sendHeart(userId, bookId) {
-    return http.post('/hearts/', 'userId=' + userId + '&bookId=' + bookId, headers());
+    return http.post('/hearts/', JSON.stringify({userId: userId, bookId: bookId}), headers());
 }
 
 export function deleteHeart(userId) {

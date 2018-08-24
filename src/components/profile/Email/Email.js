@@ -21,7 +21,14 @@ class Email extends Component {
         let interestedInGender = this.props.profile.interestedInGender;
         let birthDate = this.props.profile.birthDate;
         let bio = this.props.profile.bio;
-        let payload = 'name=' + name + '&email=' + email + '&gender=' + gender + '&interestedInGender=' + interestedInGender + '&birthDate=' + birthDate + '&bio=' + bio;
+        let payload = JSON.stringify({
+            name: name,
+            email: email,
+            gender: gender,
+            interestedInGender: interestedInGender,
+            birthDate: birthDate,
+            bio: bio
+        });
         updateProfile(payload).then((response) => {
             if (response.status === 200) {
                 this.setState({isSending: false});

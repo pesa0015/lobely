@@ -9,5 +9,11 @@ export function updateProfile(payload) {
 }
 
 export function updatePassword(current, newPassword, repeatNew) {
-    return http.put('/user/profile/password', 'currentPassword=' + current + '&newPassword=' + newPassword + '&repeatNewPassword=' + repeatNew, headers());
+    let payload = JSON.stringify({
+        currentPassword: current,
+        newPassword: newPassword,
+        repeatNewPassword: repeatNew
+    });
+
+    return http.put('/user/profile/password', payload, headers());
 }

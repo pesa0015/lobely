@@ -13,7 +13,7 @@ export function getBooks() {
 }
 
 export function likeBook(id) {
-    return http.post('/bookshelfs', 'bookId=' + id, headers());
+    return http.post('/bookshelfs', JSON.stringify({bookId: id}), headers());
 }
 
 export function deleteBook(id) {
@@ -21,5 +21,5 @@ export function deleteBook(id) {
 }
 
 export function updateBookComment(id, comment) {
-    return http.put('/bookshelfs/' + id, 'comment=' + comment, headers());
+    return http.put('/bookshelfs/' + id, JSON.stringify({comment: comment}), headers());
 }

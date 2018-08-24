@@ -28,11 +28,12 @@ class LoginOption extends Component {
         window.FB.login(function(response) {
             if (response.status === 'connected') {
                 window.FB.api('/me?fields=id,name,gender,birthday,email', 'GET', function(response) {
-                    let id = response.id;
-                    let name = response.name;
-                    let email = response.email;
-                    let gender = response.gender;
-                    let payload = 'facebook_id=' + id + '&name=' + name + '&email=' + email + '&gender=' + gender;
+                    let payload = JSON.stringify({
+                        facebookId: response.id,
+                        name: response.name,
+                        email: response.email,
+                        gender: response.gender
+                    });
                     facebookAuth(payload).then((response) => {
                         window.localStorage.setItem('user', JSON.stringify(response.data));
                         window.location.href = '/home';
@@ -51,7 +52,10 @@ class LoginOption extends Component {
         e.preventDefault();
         this.setState({buttonIsLoading: true});
 
-        let payload = 'email=' + this.state.username + '&password=' + this.state.password;
+        let payload = JSON.stringify({
+            email: this.state.username,
+            password: this.state.password
+        });
         login(payload).then((response) => {
             if (response.status === 200) {
                 this.props.dispatch(loginSuccess(response.data));
@@ -61,14 +65,17 @@ class LoginOption extends Component {
     }
     handleRegister(e){
         e.preventDefault();
-        let name = this.state.name;
-        let email = this.state.email;
-        let gender = this.state.gender;
         let password = this.state.password;
         let repeatPassword = this.state.repeatPassword;
 
         if (password === repeatPassword) {
-            let payload = 'name=' + name + '&email=' + email + '&gender=' + gender + '&password=' + password + '&repeatPassword=' + repeatPassword;
+            let payload = JSON.stringify({
+                name: this.state.name,
+                email: this.state.email,
+                gender: this.state.gender,
+                password: password,
+                repeatPassword: repeatPassword
+            });
             register(payload).then((response) => {
                 notyMessage('Registrering lyckades');
             });
@@ -76,7 +83,9 @@ class LoginOption extends Component {
     }
     handleForgotPassword(e){
         e.preventDefault();
-        let payload = 'email=' + this.state.forgotPassword;
+        let payload = JSON.stringify({
+            email: this.state.forgotPassword
+        });
         forgotPassword(payload).then((response) => {
             notyMessage('Lösenord återställning har skickats till ' + this.state.forgotPassword);
         });

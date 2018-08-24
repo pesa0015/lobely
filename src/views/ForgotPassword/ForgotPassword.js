@@ -16,7 +16,10 @@ export class ForgotPassword extends Component {
         let repeatPassword = this.state.repeatPassword;
 
         if (password === repeatPassword) {
-            let payload = 'token=' + this.state.token + '&password=' + this.state.password;
+            let payload = JSON.stringify({
+                token: this.state.token,
+                password: this.state.password
+            })
             resetPassword(payload).then((response) => {
                 notyMessage('Lösenord återställning lyckades');
             });
