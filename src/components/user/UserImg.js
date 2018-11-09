@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './users.css'
 
-export const User = ({user}) => {
+export const UserImg = ({user}) => {
     return (
         <div className='user-profile'>
             <Link to={'/user/' + user.slug} id={user.slug}>
@@ -12,4 +11,4 @@ export const User = ({user}) => {
     );
 }
 
-export default User;
+export default UserImg;
