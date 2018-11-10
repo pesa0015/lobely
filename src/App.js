@@ -32,7 +32,10 @@ class Routes extends Component {
         if (!isLoggedIn()) {
             return <Redirect to='/'/>;
         }
-        this.fetchProfile();
+        if (typeof store.getState().profile.name === 'undefined') {
+            this.fetchProfile();
+        }
+
         return (
             <div>
                 <IdleTimer
