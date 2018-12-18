@@ -23,7 +23,7 @@ export default class Nav extends Component {
         this.setState({books: []});
     }
     render() {
-        let firstname = jwt_decode(window.localStorage.getItem('user')).firstname;
+        let firstname = jwt_decode(window.localStorage.getItem('token')).firstname;
     return (
       <div>
         <header>

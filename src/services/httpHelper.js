@@ -8,7 +8,7 @@ var http = axios.create({
 });
 
 const headers = () => {
-    let token = JSON.parse(window.localStorage.getItem('user')).token;
+    let token = JSON.parse(window.localStorage.getItem('token'));
     return {
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
