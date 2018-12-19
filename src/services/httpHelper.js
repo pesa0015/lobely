@@ -1,20 +1,13 @@
 import axios from 'axios'
 
+let token = JSON.parse(window.localStorage.getItem('token'));
+
 var http = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': 'Bearer ' + token
     },
 });
 
-const headers = () => {
-    let token = JSON.parse(window.localStorage.getItem('token'));
-    return {
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Authorization': 'Bearer ' + token
-        }
-    };
-}
-
-export { http, headers };
+export default http;

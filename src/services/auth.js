@@ -1,4 +1,4 @@
-import { http } from './httpHelper'
+import http from './httpHelper'
 
 export function login(payload) {
     return http.post('/auth', payload);

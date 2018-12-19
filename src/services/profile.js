@@ -1,11 +1,11 @@
-import { http, headers } from './httpHelper'
+import http from './httpHelper'
 
 export function getProfile() {
-    return http('/user/profile/', headers());
+    return http('/user/profile/');
 }
 
 export function updateProfile(payload) {
-    return http.put('/user/profile/', payload, headers());
+    return http.put('/user/profile/', payload);
 }
 
 export function updatePassword(current, newPassword, repeatNew) {
@@ -15,5 +15,5 @@ export function updatePassword(current, newPassword, repeatNew) {
         repeatNewPassword: repeatNew
     });
 
-    return http.put('/user/profile/password', payload, headers());
+    return http.put('/user/profile/password', payload);
 }

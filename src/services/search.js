@@ -1,5 +1,5 @@
-import { http, headers } from './httpHelper'
+import http from './httpHelper'
 
 export function searchBooks(title) {
-    return http.get('/books?title=' + title, headers());
+    return http.get('/books?title=' + title);
 }
