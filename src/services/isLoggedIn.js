@@ -1,4 +1,4 @@
 export default function isLoggedIn() {
-    let user = JSON.parse(window.localStorage.getItem('token'));
-    return user != null;
+    let token = window.localStorage.getItem('token');
+    return token != null;
 }

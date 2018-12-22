@@ -1,5 +1,5 @@
 export function logoutSuccess() {
-    window.localStorage.setItem('token', null);
+    window.localStorage.removeItem('token');
     return {
         type: 'DO_LOGOUT'
     }

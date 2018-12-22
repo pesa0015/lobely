@@ -8,7 +8,6 @@ const auth = (state = initialState, action) => {
         case 'LOGIN_SUCCESS':
             return Object.assign({}, state, {
                 token: action.payload.token,
-                firstname: action.payload.firstname,
                 id: action.payload.id,
                 isAuthenticated: true
             });
