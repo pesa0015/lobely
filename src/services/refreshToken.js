@@ -4,7 +4,7 @@ export default function refreshToken() {
     http('/refresh-token').then((response) => {
         if (response.status === 200) {
             let token = response.headers.authorization.replace('Bearer ', '');
-            window.localStorage.getItem('token').token = token;
+            window.localStorage.setItem('token', token);
         }
     });
 }
