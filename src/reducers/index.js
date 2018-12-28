@@ -2,7 +2,8 @@ import {combineReducers} from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import auth from './auth';
 import books from './book';
-import users from './user';
+import users from './users';
+import user from './user';
 import profile from './profile';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     auth,
     books,
     users,
+    user,
     profile
 });

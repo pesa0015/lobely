@@ -7,3 +7,7 @@ export function sendHeart(userId, bookId) {
 export function deleteHeart(userId) {
     return http.delete('/hearts/' + userId);
 }
+
+export function getUserBySlug(slug, book) {
+    return http.get('/user/' + slug + '?book=' + book);
+}

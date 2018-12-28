@@ -11,10 +11,10 @@ class UserCommentContainer extends Component {
                         <blockquote>{this.props.user.like.comment}</blockquote>
                         : null
                     }
-                    <Link to={'/user/' + this.props.user.slug} id={this.props.user.slug}>{this.props.user.name}</Link>
+                    <Link to={'/user/' + this.props.user.slug + '/' + this.props.book} id={this.props.user.slug}>{this.props.user.name}</Link>
                     {this.props.user.heart ?
                         null
-                        : <Link to={'/user/' + this.props.user.slug}><img src={heart} className='heart' alt='Heart'/></Link>
+                        : <Link to={'/user/' + this.props.user.slug + '/' + this.props.book}><img src={heart} className='heart' alt='Heart'/></Link>
                     }
                 </div>
             </div>

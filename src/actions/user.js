@@ -5,6 +5,13 @@ export function fetchUsers(users) {
     }
 }
 
+export function addUser(user) {
+    return {
+        type: 'ADD_USER',
+        payload: user
+    }
+}
+
 export function listUsers() {
     return {
         type: 'LIST_USERS'

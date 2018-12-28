@@ -6,7 +6,7 @@ import { Redirect } from 'react-router'
 import IdleTimer from 'react-idle-timer'
 import reducer from './reducers'
 import refreshToken from './services/refreshToken'
-import { Login, Home, Book, Profile, ForgotPassword } from './views'
+import { Login, Home, Book, Profile, ForgotPassword, User } from './views'
 import { getProfile} from './services/profile'
 import { fetchProfile } from './actions/profile'
 import isLoggedIn from './services/isLoggedIn'
@@ -51,6 +51,9 @@ class Routes extends Component {
                     <Route exact path='/profile' component={Profile}/>
                     <Route exact path='/title/:slug' component={(props) => (
                         <Book slug={props.match.params.slug}/>
+                    )}/>
+                    <Route exact path='/user/:slug/:title?' component={(props) => (
+                        <User slug={props.match.params.slug} book={props.match.params.title}/>
                     )}/>
                   </Switch>
                 </div>

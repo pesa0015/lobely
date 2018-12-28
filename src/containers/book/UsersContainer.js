@@ -28,8 +28,8 @@ class UsersContainer extends Component {
             <div id='book-users'>
                 {users.map((user, index) => (
                     <div key={index} className={this.props.userHeart.liked && this.props.userHeart.userId !== this.props.user.id ? 'column user hide' : 'column user'}>
-                        <UserImg user={user}/>
-                        <UserCommentContainer user={user} heart={this.props.userHeart}/>
+                        <UserImg user={user} book={this.state.slug}/>
+                        <UserCommentContainer user={user} heart={this.props.userHeart} book={this.state.slug}/>
                     </div>
                 ))}
             </div>
