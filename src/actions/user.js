@@ -20,7 +20,7 @@ export function listUsers() {
 
 export function likeUser(id) {
     return {
-        type: 'LIKE_USER',
+        type: 'SEND_USER_HEART',
         payload: {
             id: id
         }

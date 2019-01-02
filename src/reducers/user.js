@@ -6,6 +6,11 @@ const user = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_USER':
             return user;
+        case 'SEND_USER_HEART':
+            return {
+                ...state,
+                heart: true
+            }
         default:
             return state;
     }
