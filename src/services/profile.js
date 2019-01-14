@@ -17,3 +17,7 @@ export function updatePassword(current, newPassword, repeatNew) {
 
     return http.put('/user/profile/password', payload);
 }
+
+export function getNotificationsCount() {
+    return http('/notifications/count');
+}

@@ -7,8 +7,9 @@ import IdleTimer from 'react-idle-timer'
 import reducer from './reducers'
 import refreshToken from './services/refreshToken'
 import { Login, Home, Book, Profile, ForgotPassword, User } from './views'
-import { getProfile} from './services/profile'
+import { getProfile, getNotificationsCount } from './services/profile'
 import { fetchProfile } from './actions/profile'
+import { fetchNotificationsCount } from './actions/notification'
 import isLoggedIn from './services/isLoggedIn'
 import './App.css'
 import Nav from './views/Nav/Nav'
@@ -28,12 +29,18 @@ class Routes extends Component {
             store.dispatch(fetchProfile(response.data));
         });
     }
+    fetchNotifications() {
+        getNotificationsCount().then((response) => {
+            store.dispatch(fetchNotificationsCount(response.data));
+        });
+    }
     render() {
         if (!isLoggedIn()) {
             return <Redirect to='/'/>;
         }
         if (typeof store.getState().profile.name === 'undefined') {
             this.fetchProfile();
+            this.fetchNotifications();
         }
 
         return (
@@ -44,19 +51,21 @@ class Routes extends Component {
                     idleAction={this.onIdle}
                     timeout={1500000}
                     format="MM-DD-YYYY HH:MM:ss.SSS">
-                <Nav/>
-                <div id='wrapper'>
                   <Switch>
-                    <Route exact path='/home' component={Home}/>
-                    <Route exact path='/profile' component={Profile}/>
-                    <Route exact path='/title/:slug' component={(props) => (
-                        <Book slug={props.match.params.slug}/>
-                    )}/>
-                    <Route exact path='/user/:slug/:title?' component={(props) => (
-                        <User slug={props.match.params.slug} book={props.match.params.title}/>
-                    )}/>
+                    <div>
+                        <Nav/>
+                        <div id='wrapper'>
+                            <Route exact path='/home' component={Home}/>
+                            <Route exact path='/profile' component={Profile}/>
+                            <Route exact path='/title/:slug' component={(props) => (
+                                <Book slug={props.match.params.slug}/>
+                            )}/>
+                            <Route exact path='/user/:slug/:title?' component={(props) => (
+                                <User slug={props.match.params.slug} book={props.match.params.title}/>
+                            )}/>
+                        </div>
+                    </div>
                   </Switch>
-                </div>
               </IdleTimer>
           </div>
         )

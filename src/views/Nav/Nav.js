@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import { searchBooks } from './../../services/search'
 import Logout from './Logout'
 import './Nav.css'
+import heart from './../../assets/img/heart-liked.png'
 
-export default class Nav extends Component {
+export class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {title: '', books: [], chosenBook: false, slug: ''};
@@ -23,6 +25,7 @@ export default class Nav extends Component {
         this.setState({books: []});
     }
     render() {
+        let notifications = this.props.notification.count;
         let firstname = jwt_decode(window.localStorage.getItem('token')).firstname;
     return (
       <div>
@@ -35,6 +38,7 @@ export default class Nav extends Component {
                     ))}
                 </div>
                 <div className="navbar-menu">
+                    <Link to="notifications"><div className="navbar-item"><img src={heart} alt="Heart"/><span className="notification-count">{notifications}</span></div></Link>
                     <Link to="/home"><div className="navbar-item">Hem</div></Link>
                     <Link to="/profile"><div className="navbar-item">{ firstname }</div></Link>
                     <div className="navbar-item"><Logout/></div>
@@ -45,3 +49,9 @@ export default class Nav extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps)(Nav)

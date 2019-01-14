@@ -55,3 +55,8 @@ nav #search-bar a {
 #search-book::placeholder { /* Most modern browsers support this now. */
    color:    #000000;
 }
+.notification-count {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
