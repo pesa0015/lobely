@@ -4,3 +4,10 @@ export function fetchNotificationsCount(notifications) {
         payload: notifications
     }
 }
+
+export function fetchNotifications(notifications) {
+    return {
+        type: 'FETCH_NOTIFICATIONS',
+        payload: notifications
+    }
+}

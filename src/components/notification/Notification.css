@@ -1,0 +1,10 @@
+.media {
+    margin: 50px auto;
+}
+.media-left img {
+    border-radius: 100px;
+    display: inline-block;
+}
+.media-right img {
+    float: right;
+}
