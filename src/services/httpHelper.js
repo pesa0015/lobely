@@ -19,7 +19,21 @@ http.interceptors.request.use(
 
     return config;
   },
-  error => Promise.reject(error)
+  error => {
+    return Promise.reject(error);
+  }
 );
+
+http.interceptors.response.use((response) => {
+    return response;
+}, error => {
+    if (error.response.status === 401) {
+        window.localStorage.removeItem('token');
+        window.location.href = '/';
+
+        return;
+    }
+    return Promise.reject(error);
+});
 
 export default http;
