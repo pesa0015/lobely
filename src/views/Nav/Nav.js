@@ -25,8 +25,16 @@ export class Nav extends Component {
         this.setState({books: []});
     }
     render() {
+        let token = window.localStorage.getItem('token');
+        let firstname;
+
+        if (!token) {
+            firstname = null;
+        } else {
+            firstname = jwt_decode(token).firstname;
+        }
+
         let notifications = this.props.notification;
-        let firstname = jwt_decode(window.localStorage.getItem('token')).firstname;
     return (
       <div>
         <header>

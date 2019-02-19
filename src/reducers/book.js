@@ -6,6 +6,8 @@ const books = (state = initialState, action) => {
     const book = action.payload;
 
     switch (action.type) {
+        case 'DO_LOGOUT':
+            return [];
         case 'FETCH_BOOKS':
             bookIds.length = 0;
             action.payload.map(book => {
