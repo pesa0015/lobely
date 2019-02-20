@@ -1,18 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { age } from './../../services/age'
 import './Notification.css'
 import UserImg from './UserImg'
 
 export const Notification = ({notification}) => {
+    let profile = '/user/' + notification.user.slug + '/' + notification.book.slug;
+
     return (
         <article className="media">
             <figure className="media-left">
-                <UserImg user={notification.user} className="image is-64x64"/>
+                <Link to={profile}>
+                    <UserImg user={notification.user} className="image is-64x64"/>
+                </Link>
             </figure>
             <div className="media-content">
                 <div className="content">
                     <p>
-                        <strong>{notification.user.name}, {age(notification.user.birthDate)}</strong>
+                        <strong>
+                            <Link to={profile}>{notification.user.name}, {age(notification.user.birthDate)}</Link>
+                        </strong>
                         <br/>
                         <span>{notification.user.bio}</span>
                     </p>
