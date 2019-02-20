@@ -8,3 +8,6 @@
 .media-right img {
     float: right;
 }
+.media-content a {
+    color: #000000;
+}
