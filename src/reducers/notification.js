@@ -22,6 +22,13 @@ const notification = (state = initialState, action) => {
                 ...state,
                 data: notification
             }
+        case 'UPDATE_HEART':
+            return {
+               ...state,
+               data: state.data.map(
+                   (data) => data.id === notification.id ? {...data, status: action.payload.status} : data
+               )
+            }
         default:
             return state;
     }

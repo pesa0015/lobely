@@ -11,3 +11,10 @@ export function fetchNotifications(notifications) {
         payload: notifications
     }
 }
+
+export function updateHeartStatus(notification) {
+    return {
+        type: 'UPDATE_HEART',
+        payload: notification
+    }
+}
