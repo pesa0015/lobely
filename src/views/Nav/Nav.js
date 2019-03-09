@@ -46,7 +46,7 @@ export class Nav extends Component {
                     ))}
                 </div>
                 <div className="navbar-menu">
-                    <Link to="notifications"><div className="navbar-item"><img src={heart} alt="Heart"/><span className="notification-count">{notifications.count}</span></div></Link>
+                    <Link to="/notifications"><div className="navbar-item"><img src={heart} alt="Heart"/><span className="notification-count">{notifications.count}</span></div></Link>
                     <Link to="/home"><div className="navbar-item">Hem</div></Link>
                     <Link to="/profile"><div className="navbar-item">{ firstname }</div></Link>
                     <div className="navbar-item"><Logout/></div>
