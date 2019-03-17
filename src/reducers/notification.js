@@ -29,6 +29,14 @@ const notification = (state = initialState, action) => {
                    (data) => data.id === notification.id ? {...data, status: action.payload.status} : data
                )
             }
+        case 'REMOVE_NOTIFICATION':
+            return {
+                ...state,
+                count: {
+                    hearts: state.count.hearts - 1,
+                    messages: state.count.messages
+                }
+            }
         default:
             return state;
     }

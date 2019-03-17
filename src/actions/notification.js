@@ -18,3 +18,9 @@ export function updateHeartStatus(notification) {
         payload: notification
     }
 }
+
+export function removeNotification() {
+    return {
+        type: 'REMOVE_NOTIFICATION'
+    }
+}

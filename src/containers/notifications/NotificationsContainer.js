@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Modal from 'reboron/DropModal'
 import { getNotifications } from './../../services/notifications'
 import { updateHeart } from './../../services/user'
-import { fetchNotifications, updateHeartStatus } from './../../actions/notification'
+import { fetchNotifications, updateHeartStatus, removeNotification } from './../../actions/notification'
 import Notification from './../../components/notification/Notification'
 import MessageForm from './../../components/notification/MessageForm'
 
@@ -39,6 +39,7 @@ class NotificationsContainer extends Component {
         updateHeart(userId, heartStatus[status])
             .then((response) => {
                 this.props.dispatch(updateHeartStatus(response.data));
+                this.props.dispatch(removeNotification());
                 this.setState({loading: false});
 
                 if (response.data.status === heartStatus.approved) {
