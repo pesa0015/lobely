@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Modal from 'reboron/DropModal'
 import { getNotifications } from './../../services/notifications'
 import { updateHeart } from './../../services/user'
 import { fetchNotifications, updateHeartStatus } from './../../actions/notification'
-import { Notification } from './../../components/notification/Notification'
+import Notification from './../../components/notification/Notification'
+import MessageForm from './../../components/notification/MessageForm'
 
 const heartStatus = {
     pending: 0,
@@ -11,10 +13,18 @@ const heartStatus = {
     denied: 2
 }
 
+const ref = React.createRef();
+
+const MessageModal = React.forwardRef((props, ref) => (
+    <Modal ref={ref} className="message-modal">
+        <MessageForm {...props}/>
+    </Modal>
+));
+
 class NotificationsContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {loading: false};
+        this.state = {loading: false, heartApproved: null};
     }
 
     componentWillMount() {
@@ -30,6 +40,11 @@ class NotificationsContainer extends Component {
             .then((response) => {
                 this.props.dispatch(updateHeartStatus(response.data));
                 this.setState({loading: false});
+
+                if (response.data.status === heartStatus.approved) {
+                    this.setState({heartApproved: response.data});
+                    ref.current.show();
+                }
             });
     }
 
@@ -40,6 +55,7 @@ class NotificationsContainer extends Component {
         }
         return (
             <div>
+                <MessageModal {...this.state.heartApproved} ref={ref}/>
                 {notifications.data.map(notification => (
                     <Notification key={notification.user.id} notification={notification} handleUpdateHeart={this.handleUpdateHeart.bind(this)} heartStatus={heartStatus} loading={this.state.loading}/>
                 ))}
