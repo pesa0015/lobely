@@ -51,7 +51,7 @@ class NotificationsContainer extends Component {
 
     render() {
         let notifications = this.props.notification;
-        if (notifications.length === 0) {
+        if (notifications.count.hearts === 0) {
             return null;
         }
         return (

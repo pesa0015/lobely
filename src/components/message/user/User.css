@@ -1,0 +1,12 @@
+#user-messages {
+    text-align: center;
+}
+p {
+    font-size: 25px;
+    margin: 40px auto;
+}
+.button {
+    display: block;
+    margin: auto;
+    width: 70px;
+}

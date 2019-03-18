@@ -7,6 +7,7 @@ import user from './user';
 import userHeart from './userHeart';
 import profile from './profile';
 import notification from './notification'
+import message from './message'
 
 export default combineReducers({
     form: formReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     user,
     userHeart,
     profile,
-    notification
+    notification,
+    message
 });

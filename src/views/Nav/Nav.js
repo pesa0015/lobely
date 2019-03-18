@@ -6,6 +6,7 @@ import { searchBooks } from './../../services/search'
 import Logout from './Logout'
 import './Nav.css'
 import heart from './../../assets/img/heart-liked.png'
+import message from './../../assets/img/message-white.png'
 
 export class Nav extends Component {
     constructor(props) {
@@ -46,7 +47,16 @@ export class Nav extends Component {
                     ))}
                 </div>
                 <div className="navbar-menu">
-                    <Link to="/notifications"><div className="navbar-item"><img src={heart} alt="Heart"/><span className="notification-count">{notifications.count}</span></div></Link>
+                    <Link to="/messages"><div className="navbar-item"><img src={message} alt="Message"/>
+                    {(notifications.count.messages > 0 ? (
+                        <span className="notification-count">{notifications.count.messages}</span>
+                        ) : null
+                    )}</div></Link>
+                    <Link to="/notifications"><div className="navbar-item"><img src={heart} alt="Heart"/>
+                    {(notifications.count.hearts > 0 ? (
+                        <span className="notification-count">{notifications.count.hearts}</span>
+                        ) : null
+                    )}</div></Link>
                     <Link to="/home"><div className="navbar-item">Hem</div></Link>
                     <Link to="/profile"><div className="navbar-item">{ firstname }</div></Link>
                     <div className="navbar-item"><Logout/></div>
