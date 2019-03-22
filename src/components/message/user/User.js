@@ -6,7 +6,7 @@ import './User.css'
 import UserImg from './../../../components/user/UserImg'
 
 export const User = ({heart}) => {
-    if (heart.messages.length === 0) {
+    if (typeof heart.messages === 'undefined' || heart.messages.length === 0) {
         return null;
     }
 
@@ -16,7 +16,9 @@ export const User = ({heart}) => {
             <h4 className="title is-4">{heart.user.name}, {age(heart.user.birthDate)}</h4>
             <br/>
             <Link to={"/messages/" + heart.user.slug + "/" + heart.id} className="button is-success">Skriv</Link>
-            <p>{moment(heart.messages[0].createdAt).startOf('hour').fromNow()}<hr/>{heart.messages[0].body}</p>
+            <p>{moment(heart.messages[0].createdAt).startOf('hour').fromNow()}</p>
+            <hr/>
+            <p>{heart.messages[0].body}</p>
         </div>
     );
 }

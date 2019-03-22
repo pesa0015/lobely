@@ -6,7 +6,7 @@ import { Redirect } from 'react-router'
 import IdleTimer from 'react-idle-timer'
 import reducer from './reducers'
 import refreshToken from './services/refreshToken'
-import { Login, Home, Book, Profile, ForgotPassword, User, Notifications, Messages } from './views'
+import { Login, Home, Book, Profile, ForgotPassword, User, Notifications, Messages, Chat } from './views'
 import { getProfile, getNotificationsCount } from './services/profile'
 import { fetchProfile } from './actions/profile'
 import { fetchNotificationsCount } from './actions/notification'
@@ -65,6 +65,7 @@ class Routes extends Component {
                             )}/>
                             <Route exact path='/notifications' component={Notifications}/>
                             <Route exact path='/messages' component={Messages}/>
+                            <Route exact path='/messages/:slug/:heartId' component={Chat}/>
                         </div>
                     </div>
                   </Switch>

@@ -1,7 +1,7 @@
 #user-messages {
     text-align: center;
 }
-p {
+#user-messages p {
     font-size: 25px;
     margin: 40px auto;
 }

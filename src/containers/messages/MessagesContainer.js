@@ -14,7 +14,7 @@ class MessagesContainer extends Component {
 
     render() {
         let hearts = this.props.notification;
-        if (hearts.count.messages === 0) {
+        if (typeof this.props.message.data.user !== 'undefined' || hearts.count.messages === 0) {
             return null;
         }
         return (

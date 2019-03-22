@@ -1,7 +1,7 @@
 import http from './httpHelper'
 
-export function getMessages(payload) {
-    return http('/messages/', payload);
+export function getMessages(heartId) {
+    return http.get('/messages/' + heartId);
 }
 
 export function getUsersWithMessages() {

@@ -15,11 +15,6 @@ const message = (state = initialState, action) => {
                 ...state,
                 data: message
             }
-        case 'FETCH_MESSAGES':
-            return {
-                ...state,
-                data: message
-            }
         default:
             return state;
     }

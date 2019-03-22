@@ -1,0 +1,13 @@
+#user-chat {
+    text-align: center;
+}
+#messages {
+    width: 400px;
+    margin: auto;
+}
+#messages .left {
+    text-align: left;
+}
+#messages .right {
+    text-align: right;
+}
