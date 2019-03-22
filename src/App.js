@@ -51,24 +51,22 @@ class Routes extends Component {
                     idleAction={this.onIdle}
                     timeout={1500000}
                     format="MM-DD-YYYY HH:MM:ss.SSS">
-                  <Switch>
-                    <div>
-                        <Nav/>
-                        <div id='wrapper'>
-                            <Route exact path='/home' component={Home}/>
-                            <Route exact path='/profile' component={Profile}/>
-                            <Route exact path='/title/:slug' component={(props) => (
-                                <Book slug={props.match.params.slug}/>
-                            )}/>
-                            <Route exact path='/user/:slug/:title?' component={(props) => (
-                                <User slug={props.match.params.slug} book={props.match.params.title}/>
-                            )}/>
-                            <Route exact path='/notifications' component={Notifications}/>
-                            <Route exact path='/messages' component={Messages}/>
-                            <Route exact path='/messages/:slug/:heartId' component={Chat}/>
-                        </div>
-                    </div>
-                  </Switch>
+                <Nav/>
+                <div id='wrapper'>
+                    <Switch>
+                        <Route exact path='/home' component={Home}/>
+                        <Route exact path='/profile' component={Profile}/>
+                        <Route exact path='/title/:slug' component={(props) => (
+                            <Book slug={props.match.params.slug}/>
+                        )}/>
+                        <Route exact path='/user/:slug/:title?' component={(props) => (
+                            <User slug={props.match.params.slug} book={props.match.params.title}/>
+                        )}/>
+                        <Route exact path='/notifications' component={Notifications}/>
+                        <Route exact path='/messages' component={Messages}/>
+                        <Route exact path='/messages/:slug/:heartId' component={Chat}/>
+                    </Switch>
+                  </div>
               </IdleTimer>
           </div>
         )
