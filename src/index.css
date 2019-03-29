@@ -7,3 +7,9 @@ body {
     width: 900px;
     margin: auto;
 }
+
+@media screen and (max-width: 1023px) {
+    #wrapper {
+        width: 80%;
+    }
+}
