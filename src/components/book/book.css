@@ -5,3 +5,9 @@
 #book-cover img {
     height: 100%;
 }
+
+@media screen and (max-width: 1023px) {
+    #book-cover {
+        margin: 5% 0 0 0;
+    }
+}

@@ -16,6 +16,7 @@ export const Quote = ({user}) => {
                 <p className="quote">{user.like.comment}</p>
                 <p className="quote--author">&ndash; {user.name}, {age}</p>
             </div>
+            <br/>
         </div>
     );
 }

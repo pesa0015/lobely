@@ -24,11 +24,17 @@ p {
 
 .quote--container {
     margin: 4.5rem auto 0;
-    width: 500px;
+    width: 100%;
 }
 
 .quote--author {
     font-family: 'Open Sans Condensed';
     font-size: 25px;
     text-align: right;
+}
+
+@media screen and (max-width: 1023px) {
+    .quote--container {
+        width: auto;
+    }
 }

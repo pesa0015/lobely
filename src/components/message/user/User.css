@@ -8,5 +8,11 @@
 .button {
     display: block;
     margin: auto;
-    width: 70px;
+    width: 100px;
+}
+
+@media screen and (max-width: 1023px) {
+    .button {
+        width: 100%;
+    }
 }

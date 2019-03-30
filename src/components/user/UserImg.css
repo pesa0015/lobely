@@ -10,6 +10,11 @@
     text-align: center;
     display: inline-block;
 }
+div.user-profile img {
+    display: block;
+    margin: auto;
+    border-radius: 100px;
+}
 .user div.content {
     margin: 0 40px;
     display: inline-block;
@@ -28,4 +33,18 @@
     vertical-align: middle;
     margin-left: 20px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+    .user {
+        display: block;
+        height: auto;
+    }
+    .user div.user-profile {
+        width: 100%;
+    }
+    .user div.content {
+        margin: 0;
+        width: auto;
+    }
 }

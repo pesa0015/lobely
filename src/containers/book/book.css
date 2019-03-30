@@ -21,3 +21,14 @@
 #book-comment .card-footer-item {
     color: #000000;
 }
+
+@media screen and (max-width: 1023px) {
+    #book-page {
+        margin: 5% 0 0 0;
+        height: auto;
+    }
+    #book-comment {
+        width: auto;
+        margin: 10% 0 0 0;
+    }
+}
