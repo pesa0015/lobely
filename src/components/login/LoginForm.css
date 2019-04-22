@@ -1,0 +1,19 @@
+#welcome form {
+    width: 300px;
+    float: right;
+}
+#welcome form .label {
+    color: #C9E3C9;
+}
+#buttons .button {
+    display: inline-block;
+}
+#buttons .is-info {
+    margin-left: 0;
+    width: 50%;
+    float: left;
+}
+#buttons .is-success {
+    margin-right: 0;
+    width: 40%;
+}

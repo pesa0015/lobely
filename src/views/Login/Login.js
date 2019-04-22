@@ -2,22 +2,23 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import './Login.css'
 import logo from '../../assets/img/blooovy.png'
-import LoginOption from './LoginOption'
+import LoginForm from './../../components/login/LoginForm'
 import isLoggedIn from './../../services/isLoggedIn'
 
 export class Login extends Component {
-  render() {
-    if (isLoggedIn()) {
-        return <Redirect to='/home'/>;
-    }
-    return (
-      <div id='startWrapper'>
-            <div id='welcome'>
-                <img id='logo' src={logo} alt='Logo'/>
-                <div>Hitta din partner baserat på böckerna du gillar.</div>
+    render() {
+        if (isLoggedIn()) {
+            return <Redirect to='/home'/>;
+        }
+
+        return (
+            <div id="start-wrapper">
+                <div id="welcome">
+                    <img id="logo" src={logo} alt="Logo"/>
+                    <div id="info">Hitta din partner baserat på böckerna du gillar.</div>
+                    <LoginForm/>
+                </div>
             </div>
-            <LoginOption/>
-      </div>
-    );
-  }
+        );
+    }
 }
