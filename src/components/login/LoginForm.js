@@ -12,12 +12,12 @@ import './LoginForm.css'
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {loading: false, redirect: false};
+        this.state = {isLoading: false, redirect: false};
         this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleLogin(value) {
-        this.setState({loading: true});
+        this.setState({isLoading: true});
 
         let email = value.email;
         let password = value.password;
@@ -32,7 +32,7 @@ class LoginForm extends Component {
         login(payload)
             .then((response) => {
                 this.props.dispatch(loginSuccess(response.data));
-                this.setState({loading: false, redirect: true});
+                this.setState({isLoading: false, redirect: true});
             });
     }
 
@@ -58,7 +58,7 @@ class LoginForm extends Component {
                         component={renderField}/>
                     <div id="buttons">
                         <Link to="/forgot-password" className="button is-info">Glömt lösenord</Link>
-                        <LoginFormSubmit loading={this.state.loading} onSubmit={this.handleLogin}/>
+                        <LoginFormSubmit loading={this.state.isLoading} onSubmit={this.handleLogin}/>
                     </div>
                 </form>
             </div>
