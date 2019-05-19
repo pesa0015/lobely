@@ -6,7 +6,7 @@ import { Redirect } from 'react-router'
 import IdleTimer from 'react-idle-timer'
 import reducer from './reducers'
 import refreshToken from './services/refreshToken'
-import { Login, Home, Book, Profile, ForgotPassword, ResetPassword, User, Notifications, Messages, Chat } from './views'
+import { Login, Home, Book, Profile, ForgotPassword, ResetPassword, User, Notifications, Messages, Chat, SignUp } from './views'
 import { getProfile, getNotificationsCount } from './services/profile'
 import { fetchProfile } from './actions/profile'
 import { fetchNotificationsCount } from './actions/notification'
@@ -81,6 +81,7 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={Login}/>
+                    <Route exact path='/sign-up' component={SignUp}/>
                     <Route exact path='/forgot-password' component={ForgotPassword}/>
                     <Route exact path='/reset-password/:token' component={ResetPassword}/>
                     <Routes/>
