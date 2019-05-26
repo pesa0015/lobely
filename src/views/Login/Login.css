@@ -16,6 +16,9 @@
     float: right;
     color: #C9E3C9;
 }
+#logo {
+    width: 150px;
+}
 #info {
     margin-bottom: 50px;
 }

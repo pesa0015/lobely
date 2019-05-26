@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ForgotPasswordForm from './../../components/ForgotPassword/ForgotPasswordForm'
-import logo from '../../assets/img/blooovy.png'
+import logo from '../../assets/img/logo.png'
 
 export class ForgotPassword extends Component {
     render() {
