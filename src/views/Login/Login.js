@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import './Login.css'
-import logo from '../../assets/img/blooovy.png'
+import logo from '../../assets/img/logo.png'
 import LoginForm from './../../components/login/LoginForm'
 import isLoggedIn from './../../services/isLoggedIn'
 

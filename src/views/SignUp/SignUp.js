@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SignUpForm from './../../components/SignUp/SignUpForm'
-import logo from '../../assets/img/blooovy.png'
+import logo from '../../assets/img/logo.png'
 
 export class SignUp extends Component {
     render() {

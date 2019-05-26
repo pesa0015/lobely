@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ResetPasswordForm from './../../components/ResetPassword/ResetPasswordForm'
-import logo from '../../assets/img/blooovy.png'
+import logo from '../../assets/img/logo.png'
 import './ResetPassword.css'
 
 export class ResetPassword extends Component {
