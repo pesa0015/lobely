@@ -22,7 +22,8 @@
     "react-tabs": "^2.3.0",
     "reboron": "^0.4.2",
     "redux": "^3.7.2",
-    "redux-form": "^7.4.2"
+    "redux-form": "^7.4.2",
+    "snyk": "^1.167.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.14",
@@ -33,6 +34,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
