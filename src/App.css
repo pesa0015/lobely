@@ -11,3 +11,10 @@ header {
 #login:hover {
     border-color: #FFFFFF;
 }
+.notification {
+    text-align: center;
+    padding: 3px;
+}
+.notification span {
+    font-size: 17px;
+}

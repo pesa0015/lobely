@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import renderField from './../renderField/renderField'
-import { loginSuccess } from '../../actions/login'
+import { loginSent, loginSuccess, invalidLogin, loginError } from '../../actions/login'
 import { login } from './../../services/auth'
 import LoginFormSubmit from './LoginFormSubmit'
+import FormError from './../FormError/FormError'
 import 'bulma/css/bulma.css'
 import './LoginForm.css'
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {isLoading: false, redirect: false};
         this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleLogin(value) {
-        this.setState({isLoading: true});
+        this.props.dispatch(loginSent());
 
         let email = value.email;
         let password = value.password;
@@ -27,17 +28,24 @@ class LoginForm extends Component {
             password: password
         });
 
-        this.props.reset();
-
         login(payload)
             .then((response) => {
+                this.props.reset();
                 this.props.dispatch(loginSuccess(response.data));
-                this.setState({isLoading: false, redirect: true});
+            }).catch((error) => {
+                switch (error.response.status) {
+                    case 401:
+                        this.props.dispatch(invalidLogin());
+                        break;
+                    default:
+                        this.props.dispatch(loginError());
+                        break;
+                }
             });
     }
 
     render() {
-        if (this.state.redirect) {
+        if (this.props.auth.isAuthenticated) {
             return (
                 <Redirect to={'/home'}/>
             );
@@ -56,9 +64,10 @@ class LoginForm extends Component {
                         name="password"
                         type="password"
                         component={renderField}/>
+                    <FormError error={this.props.auth.error}/>
                     <div id="buttons">
                         <Link to="/forgot-password" className="button is-info">Glömt lösenord</Link>
-                        <LoginFormSubmit loading={this.state.isLoading} onSubmit={this.handleLogin}/>
+                        <LoginFormSubmit loading={this.props.auth.isLoading} onSubmit={this.handleLogin}/>
                     </div>
                 </form>
             </div>
@@ -66,9 +75,13 @@ class LoginForm extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return state
+}
+
 LoginForm = reduxForm({
   form: 'loginForm',
   destroyOnUnmount: false
-})(LoginForm);
+})(connect(mapStateToProps)(LoginForm))
 
 export default LoginForm
