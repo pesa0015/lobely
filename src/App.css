@@ -18,3 +18,20 @@ header {
 .notification span {
     font-size: 17px;
 }
+.noty_theme__mint.noty_type__success {
+    background: #61BE64;
+    padding: 12px;
+    border-radius: 3px;
+    color: #FFFFFF;
+}
+.noty_body {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+}
+.noty_theme__mint.noty_type__success img {
+    display: inline-block;
+    width: 35px;
+    vertical-align: middle;
+    float: right;
+}
