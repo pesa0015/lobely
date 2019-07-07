@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, SubmissionError } from 'redux-form'
 import { Link } from 'react-router-dom'
 import renderField from './../renderField/renderField'
+import RadioGroup from './../renderField/RadioGroup'
 import notyMessage from './../../services/notyMessage'
 import { register } from './../../services/auth'
-import SignUpFormSubmit from './SignUpFormSubmit'
+import { name, email, gender, password } from './../renderField/validation'
 import './SignUpForm.css'
+
+const validatePassword = value => value.password !== value.repeatpassword ? false : true
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -14,26 +17,25 @@ class SignUpForm extends Component {
         this.handleSignUp = this.handleSignUp.bind(this);
     }
     handleSignUp(value) {
+        if (!validatePassword(value)) {
+            throw new SubmissionError({repeatpassword: 'Upprepa lösenord stämmer inte', _error: 'Upprepa lösenord stämmer inte'})
+        }
+
         this.setState({isLoading: true});
 
-        let password = value.password;
-        let repeatPassword = value.repeatpassword;
+        this.props.reset();
 
-        if (password === repeatPassword) {
-            this.props.reset();
-
-            let payload = JSON.stringify({
-                name: value.name,
-                email: value.email,
-                gender: value.gender,
-                password: password,
-                repeatPassword: repeatPassword
-            });
-            register(payload).then((response) => {
-                this.setState({isLoading: false, haveSignedUp: true});
-                notyMessage('Registrering lyckades');
-            });
-        }
+        let payload = JSON.stringify({
+            name: value.name,
+            email: value.email,
+            gender: value.gender,
+            password: value.password,
+            repeatPassword: value.repeatpassword
+        });
+        register(payload).then((response) => {
+            this.setState({isLoading: false, haveSignedUp: true});
+            notyMessage('Registrering lyckades');
+        });
     }
     render() {
         return (
@@ -43,24 +45,29 @@ class SignUpForm extends Component {
                     <Field
                         name="name"
                         type="text"
-                        component={renderField}/>
+                        component={renderField}
+                        validate={name}/>
                     <label className="label">E-mail</label>
                     <Field
                         name="email"
                         type="email"
-                        component={renderField}/>
+                        component={renderField}
+                        validate={email}/>
                     <label className="label">Kön</label>
                     <div className="control">
                         <div>
-                            <label style={{marginRight: '10px'}}><Field name="gender" component="input" type="radio" value="f"/> Kvinna</label>
-                            <label><Field name="gender" component="input" type="radio" value="m"/> Man</label>
+                            <Field component={RadioGroup} name="gender" validate={gender} options={[
+                                { title: 'Kvinna', value: 'f' },
+                                { title: 'Man', value: 'm' }]}/>
                         </div>
                     </div>
+                    <br/>
                     <label className="label">Lösenord</label>
                     <Field
                         name="password"
                         type="password"
-                        component={renderField}/>
+                        component={renderField}
+                        validate={password}/>
                     <label className="label">Repetera lösenord</label>
                     <Field
                         name="repeatpassword"
@@ -70,7 +77,7 @@ class SignUpForm extends Component {
                     <div id="buttons">
                         {
                             !this.state.haveSignedUp ? (
-                                <SignUpFormSubmit loading={this.state.isLoading} onSubmit={this.handleSignUp}/>
+                                <button className={"button is-success " + (this.state.isLoading ? 'is-loading' : '')} disabled={this.state.isLoading} type="submit" onClick={this.props.handleSubmit(this.handleSignUp)}>Skicka</button>
                             ) : (
                                 <div>
                                     <button className="button is-success" disabled={true}>Skicka</button>
