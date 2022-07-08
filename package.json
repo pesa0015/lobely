@@ -9,7 +9,7 @@
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "noty": "^3.2.0-beta",
     "react": "^16.8.6",
     "react-bulma-components": "2.2.0",
